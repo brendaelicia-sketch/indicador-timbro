@@ -4,7 +4,7 @@
   "clientes_portal": [
     "AC COMERCIAL IMPORTADORA"
   ],
-  "template_relatorio": "TODO: nome do relatorio personalizado 106 no portal Brudam para a Timbro (o da Forte reaproveita o da Ansell, AUDITORIA TELA 106_ANSELL -- confirmar se a Timbro tem um proprio)",
+  "template_relatorio": "Auditoria Timbro",
   "prefixo_consolidado": "Base",
   "onedrive_consolidado": "TODO: pasta OneDrive onde salvar a Base_Jan_<Mes>.xlsx da Timbro",
   "email_destino": "TODO: e-mail de aviso da Timbro",

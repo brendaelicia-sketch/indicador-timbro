@@ -59,7 +59,8 @@ os módulos de Cadastro/Simulador/Auditoria). Aqui só o que muda:
    atualizados para ler `PORTAL_USER_TIMBRO`/`PORTAL_PASS_TIMBRO` em vez de
    `PORTAL_USER`/`PORTAL_PASS` (evita colisão com o login azportoex no mesmo PC).
    **Falta obter e configurar essas credenciais de fato.**
-2. Confirmar/gerar o relatório personalizado 106 no portal.
+2. ~~Confirmar/gerar o relatório personalizado 106 no portal.~~ Feito: relatório
+   gerado no portal como "Auditoria Timbro" (`template_relatorio` já atualizado).
 3. Preencher `cliente_config.json` (pasta OneDrive, e-mail de aviso).
 4. ~~Trocar o logo no `index.html`.~~ Feito.
 5. ~~Criar o repositório `indicador-timbro` no GitHub e dar o primeiro push.~~ Feito,
