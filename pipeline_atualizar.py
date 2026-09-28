@@ -8,16 +8,18 @@ pipeline_atualizar.py — Pipeline completo do Indicador (cliente definido em cl
   3. Atualiza index.html com os dados novos
   4. Faz commit + push (so se algo realmente mudou)
 
-Credenciais do portal vem de PORTAL_USER / PORTAL_PASS (variaveis de
-ambiente) — nunca ficam no codigo. O envio de e-mail de notificacao usa
-EMAIL_USER / EMAIL_PASS (conta Gmail + senha de app — o Office365 da
-PortoEx bloqueia autenticacao SMTP por padrao), tambem via variavel de
-ambiente. O e-mail sempre vai para EMAIL_DESTINO (PortoEx), so o
-remetente e o Gmail.
+Credenciais do portal vem de PORTAL_USER_TIMBRO / PORTAL_PASS_TIMBRO
+(variaveis de ambiente) — nunca ficam no codigo. Nomes proprios (nao
+PORTAL_USER/PORTAL_PASS) porque o login da Timbro (pexlogistica.brudam.com.br)
+e diferente do login da Forte/Ansell (azportoex.brudam.com.br) usado no
+mesmo PC. O envio de e-mail de notificacao usa EMAIL_USER / EMAIL_PASS
+(conta Gmail + senha de app — o Office365 da PortoEx bloqueia autenticacao
+SMTP por padrao), tambem via variavel de ambiente. O e-mail sempre vai
+para EMAIL_DESTINO (PortoEx), so o remetente e o Gmail.
 
 Uso:
-  set PORTAL_USER=seu.usuario
-  set PORTAL_PASS=sua.senha
+  set PORTAL_USER_TIMBRO=seu.usuario
+  set PORTAL_PASS_TIMBRO=sua.senha
   set EMAIL_USER=seu.email@gmail.com
   set EMAIL_PASS=sua.senha.de.app.do.gmail
   python pipeline_atualizar.py
@@ -216,10 +218,10 @@ def enviar_email(assunto, corpo_html):
 
 
 def main():
-    usuario = os.environ.get("PORTAL_USER")
-    senha = os.environ.get("PORTAL_PASS")
+    usuario = os.environ.get("PORTAL_USER_TIMBRO")
+    senha = os.environ.get("PORTAL_PASS_TIMBRO")
     if not usuario or not senha:
-        log("Defina as variaveis de ambiente PORTAL_USER e PORTAL_PASS antes de rodar.")
+        log("Defina as variaveis de ambiente PORTAL_USER_TIMBRO e PORTAL_PASS_TIMBRO antes de rodar.")
         sys.exit(1)
 
     hoje = date.today()

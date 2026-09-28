@@ -52,17 +52,32 @@ os módulos de Cadastro/Simulador/Auditoria). Aqui só o que muda:
   self-hosted que ainda não existe; `working-directory` com `TODO`.
 
 ## Pendências desta cópia
-1. Confirmar o nome exato da Timbro no filtro do portal Brudam.
+1. ~~Confirmar o nome exato da Timbro no filtro do portal Brudam.~~ Feito: cliente
+   aparece como `AC COMERCIAL IMPORTADORA`, no portal `pexlogistica.brudam.com.br`
+   (diferente do `azportoex.brudam.com.br` usado pela Forte/Ansell). Como o login
+   desse portal é separado, `extrair_portal.py` e `pipeline_atualizar.py` foram
+   atualizados para ler `PORTAL_USER_TIMBRO`/`PORTAL_PASS_TIMBRO` em vez de
+   `PORTAL_USER`/`PORTAL_PASS` (evita colisão com o login azportoex no mesmo PC).
+   **Falta obter e configurar essas credenciais de fato.**
 2. Confirmar/gerar o relatório personalizado 106 no portal.
 3. Preencher `cliente_config.json` (pasta OneDrive, e-mail de aviso).
-4. Trocar o logo no `index.html`.
-5. Criar o repositório `indicador-timbro` no GitHub e dar o primeiro push.
+4. ~~Trocar o logo no `index.html`.~~ Feito.
+5. ~~Criar o repositório `indicador-timbro` no GitHub e dar o primeiro push.~~ Feito,
+   em `brendaelicia-sketch/indicador-timbro` (conta da Brenda, não a
+   `maurocmarques-creator` usada pela Forte/Ansell — decisão explícita da Brenda;
+   ver nota abaixo sobre o que isso muda na configuração do runner/Pages).
 6. Configurar o domínio `timbro.portoexapps.com.br` no Cloudflare (CNAME +
    Cloudflare Access) e o GitHub Pages.
 7. Registrar um runner self-hosted próprio da Timbro (`C:\actions-runner-timbro`
    ou nome equivalente) e criar a tarefa agendada do pipeline.
 8. Decidir se cria um Mural próprio (Artifact) para a Timbro.
 9. Decidir `reentrega_conta_performance`.
+
+**Nota sobre o repo estar em `brendaelicia-sketch`:** diferente da Forte/Ansell,
+o dono do repo não é quem hoje administra os runners self-hosted (PC do Mauro).
+Quem for configurar o runner/GitHub Pages/Actions precisa de acesso de admin
+nesse repo — se for o Mauro, `brendaelicia-sketch` precisa adicioná-lo como
+colaborador antes.
 
 ## Rodar local
 - Visualizar: `python -m http.server 8935` nesta pasta (`.claude/launch.json`

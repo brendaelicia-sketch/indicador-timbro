@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 extrair_portal.py — Automatiza a extracao do relatorio 106 (Emissoes) do
-portal Brudam (azportoex.brudam.com.br) para os clientes de cliente_config.json (clientes_portal).
+portal Brudam (pexlogistica.brudam.com.br) para os clientes de cliente_config.json (clientes_portal).
 
 Repete, via navegador headless, exatamente o fluxo manual:
   login -> Operacional > Relatorios > 106 Emissoes
@@ -10,12 +10,14 @@ Repete, via navegador headless, exatamente o fluxo manual:
   -> Gerar (isso ja baixa o Excel correto)
 
 Credenciais NUNCA ficam no codigo: vem das variaveis de ambiente
-PORTAL_USER e PORTAL_PASS (defina antes de rodar, ou configure como
-Secrets do GitHub quando isso for automatizado na nuvem).
+PORTAL_USER_TIMBRO e PORTAL_PASS_TIMBRO (defina antes de rodar, ou configure
+como Secrets do GitHub quando isso for automatizado na nuvem). Nomes proprios
+(nao PORTAL_USER/PORTAL_PASS) porque o login da Timbro (pexlogistica.brudam.com.br)
+e diferente do login da Forte/Ansell (azportoex.brudam.com.br) usado no mesmo PC.
 
 Uso:
-  set PORTAL_USER=seu.usuario
-  set PORTAL_PASS=sua.senha
+  set PORTAL_USER_TIMBRO=seu.usuario
+  set PORTAL_PASS_TIMBRO=sua.senha
   python extrair_portal.py [pasta_de_saida]
 """
 
@@ -28,8 +30,8 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 from config import CONFIG
 
-PORTAL_URL = "https://azportoex.brudam.com.br/"
-RELATORIO_URL = "https://azportoex.brudam.com.br/opr/relatorio/emissoes"
+PORTAL_URL = "https://pexlogistica.brudam.com.br/"
+RELATORIO_URL = "https://pexlogistica.brudam.com.br/opr/relatorio/emissoes"
 RELATORIO_PERSONALIZADO = CONFIG["template_relatorio"]
 CLIENTES = CONFIG["clientes_portal"]
 
@@ -133,10 +135,10 @@ def extrair_cliente(page, cliente, data_ini, data_fim, pasta_saida: Path) -> Pat
 
 
 def main():
-    usuario = os.environ.get("PORTAL_USER")
-    senha = os.environ.get("PORTAL_PASS")
+    usuario = os.environ.get("PORTAL_USER_TIMBRO")
+    senha = os.environ.get("PORTAL_PASS_TIMBRO")
     if not usuario or not senha:
-        log("Defina as variaveis de ambiente PORTAL_USER e PORTAL_PASS antes de rodar.")
+        log("Defina as variaveis de ambiente PORTAL_USER_TIMBRO e PORTAL_PASS_TIMBRO antes de rodar.")
         sys.exit(1)
 
     pasta_saida = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "downloads_tmp"
