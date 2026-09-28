@@ -61,7 +61,11 @@ os módulos de Cadastro/Simulador/Auditoria). Aqui só o que muda:
    **Falta obter e configurar essas credenciais de fato.**
 2. ~~Confirmar/gerar o relatório personalizado 106 no portal.~~ Feito: relatório
    gerado no portal como "Auditoria Timbro" (`template_relatorio` já atualizado).
-3. Preencher `cliente_config.json` (pasta OneDrive, e-mail de aviso).
+3. ~~Preencher `cliente_config.json` (pasta OneDrive, e-mail de aviso).~~ Feito:
+   `email_destino` = brenda.elicia@portoex.com.br; `onedrive_consolidado` aponta
+   pra `Analise Timbro` dentro do OneDrive da Brenda (`C:\Users\Brenda\OneDrive - PORTOEXPRESS LOGISTICA LTDA\Analise Timbro`,
+   pasta já criada). **Atenção:** esse caminho é da máquina da Brenda — se o
+   pipeline rodar em outro PC (ver item do runner), ajustar aqui.
 4. ~~Trocar o logo no `index.html`.~~ Feito.
 5. ~~Criar o repositório `indicador-timbro` no GitHub e dar o primeiro push.~~ Feito,
    em `brendaelicia-sketch/indicador-timbro` (conta da Brenda, não a
