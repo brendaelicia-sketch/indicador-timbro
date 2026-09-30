@@ -101,7 +101,7 @@ def extrair_cliente(page, cliente, data_ini, data_fim, pasta_saida: Path) -> Pat
 
     log("Clicando em PESQUISAR...")
     page.get_by_role("button", name="PESQUISAR").click()
-    page.wait_for_selector("text=/registros|Selecione um dos relat/i", timeout=30000)
+    page.wait_for_selector("text=Personalizado Excel", timeout=30000)
 
     log("Abrindo Personalizado Excel...")
     page.get_by_text("Personalizado Excel", exact=False).click()
