@@ -6,14 +6,11 @@ on:
 jobs:
   atualizar:
     runs-on: self-hosted
-    # TODO Timbro: registrar um runner self-hosted proprio para este repo
-    # (igual ao C:\actions-runner-forte da Forte, separado do da Ansell),
-    # e ajustar o working-directory abaixo pra pasta real do projeto no PC.
     # Roda direto na pasta do projeto que ja existe no PC (mesma que o
     # Agendador de Tarefas usa) -- sem clonar de novo, sem duplicar
     # pipeline.lock/run_output.log/downloads_tmp.
     steps:
       - name: Rodar pipeline
-        working-directory: "TODO: caminho da pasta do projeto Timbro no PC"
+        working-directory: C:\Users\Brenda\indicador-timbro
         run: python pipeline_atualizar.py
         shell: cmd
