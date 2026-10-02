@@ -646,7 +646,7 @@ const COLORS = {
 
 const _MN_MAP = {'01':'Jan','02':'Fev','03':'Mar','04':'Abr','05':'Mai','06':'Jun','07':'Jul','08':'Ago','09':'Set','10':'Out','11':'Nov','12':'Dez'};
 function _fmtMes(m){ const p=m.split('-'); return (_MN_MAP[p[1]]||p[1])+'/'+p[0]; }
-const MURAL_URL = '';
+const MURAL_URL = 'https://claude.ai/artifact/UnqfQDYN8GWZXU3kGMj7uM';
 
 // --- ATUALIZAR AGORA (dispara o pipeline fora do horario programado) ---
 // Chama a API do GitHub (workflow_dispatch) pra acordar o executor que
@@ -1690,7 +1690,7 @@ function renderTransito() {
         <div style="font-size:.68rem;color:#92400e;font-weight:700">${escHtml(m.autor||'PortoEx')} <span style="font-weight:400;color:#b45309">${escHtml(m.data||'')}</span></div>
         <div style="font-size:.74rem;color:#1e293b">${escHtml(m.texto||'')}</div>
       </div>`).join('');
-    const linkMural = `${MURAL_URL}?minuta=${encodeURIComponent(r.MINUTA)}`;
+    const linkMural = `${MURAL_URL}#${encodeURIComponent(r.MINUTA)}`;
     const badgeMsg = temMsg
       ? ` <a href="${linkMural}" target="_blank" rel="noopener" title="Ver conversa completa no mural"
             style="display:inline-block;margin-left:4px;padding:1px 7px;border-radius:999px;background:#fef3c7;color:#92400e;font-size:.68rem;font-weight:700;text-decoration:none;vertical-align:middle;white-space:nowrap">💬 ${msgs.length}</a>`

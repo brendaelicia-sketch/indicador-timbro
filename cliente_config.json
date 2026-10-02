@@ -9,7 +9,7 @@
   "onedrive_consolidado": "C:\\Users\\Brenda\\OneDrive - PORTOEXPRESS LOGISTICA LTDA\\Analise Timbro",
   "email_destino": "brenda.elicia@portoex.com.br",
   "link_dashboard": "https://timbro.portoexapps.com.br/",
-  "reentrega_conta_performance": false,
+  "reentrega_conta_performance": true,
   "grafia_destinatario": {},
   "status_overrides": {},
   "date_overrides": {},
