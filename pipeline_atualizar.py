@@ -217,6 +217,28 @@ def enviar_email(assunto, corpo_html):
         log(f"Falha ao enviar e-mail de notificacao: {e}")
 
 
+def enviar_whatsapp():
+    """Manda a atualizacao de transito (uma mensagem por minuta) para o grupo do
+    WhatsApp definido em cliente_config.json (whatsapp_grupo / whatsapp_pasta).
+    Nunca derruba o pipeline: qualquer falha so vai para o log."""
+    grupo = CONFIG.get("whatsapp_grupo")
+    pasta = CONFIG.get("whatsapp_pasta")
+    if not grupo or not pasta:
+        return
+    try:
+        subprocess.run([sys.executable, "gerar_mensagem.py"], cwd=pasta, check=True, timeout=180,
+                       stdout=subprocess.DEVNULL)
+        texto = (Path(pasta) / "mensagem.txt").read_text(encoding="utf-8").strip()
+        if not texto:
+            log("WhatsApp: nenhuma minuta em transito, nada a enviar.")
+            return
+        subprocess.run([sys.executable, "whatsapp_enviar.py", grupo, "mensagem.txt"], cwd=pasta, check=True,
+                       timeout=600)
+        log(f"WhatsApp: atualizacao enviada para o grupo '{grupo}'.")
+    except Exception as e:
+        log(f"Falha ao enviar WhatsApp: {e}")
+
+
 def main():
     usuario = os.environ.get("PORTAL_USER_TIMBRO")
     senha = os.environ.get("PORTAL_PASS_TIMBRO")
@@ -254,6 +276,7 @@ def main():
         f"<p>Acesse: <a href='{link}'>{link}</a></p>"
     )
     enviar_email(f"Indicador {NOME_CLIENTE} - Atualizado com Sucesso", corpo_html)
+    enviar_whatsapp()
 
     log("\nPipeline concluido.")
 

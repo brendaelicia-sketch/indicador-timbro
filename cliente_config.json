@@ -10,6 +10,8 @@
   "email_destino": "brenda.elicia@portoex.com.br",
   "link_dashboard": "https://timbro.portoexapps.com.br/",
   "reentrega_conta_performance": true,
+  "whatsapp_grupo": "Timbro",
+  "whatsapp_pasta": "C:\\Users\\Brenda\\whatsapp-timbro",
   "grafia_destinatario": {},
   "status_overrides": {},
   "date_overrides": {},
