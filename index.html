@@ -151,7 +151,7 @@ tr:last-child td{border-bottom:none}
   </div>
 </header>
 <div class="tabs">
-  <div class="tab tab-menu" id="menu-cadastro" onclick="this.classList.toggle('aberto')">Cadastro ▾
+  <div class="tab tab-menu" id="menu-cadastro" style="display:none" onclick="this.classList.toggle('aberto')">Cadastro ▾
     <div class="tab-submenu">
       <div class="tab-subitem" onclick="event.stopPropagation();document.getElementById('menu-cadastro').classList.remove('aberto');showTab('cad-servico')">Serviço</div>
       <div class="tab-subitem" onclick="event.stopPropagation();document.getElementById('menu-cadastro').classList.remove('aberto');showTab('cad-tabela')">Tabela</div>
@@ -159,7 +159,8 @@ tr:last-child td{border-bottom:none}
       <div class="tab-subitem" onclick="event.stopPropagation();document.getElementById('menu-cadastro').classList.remove('aberto');showTab('cad-cidade')">Cidade</div>
     </div>
   </div>
-  <div class="tab" onclick="showTab('simulador')">🧮 Simulador</div>
+  <div class="tab" onclick="showTab('simulador')" style="display:none">🧮 Simulador</div><!-- oculta a pedido do cliente (Cadastro, Simulador e Auditoria) -->
+  <style>#tab-btn-auditoria{display:none!important}</style>
   <div class="tab" id="tab-btn-auditoria" style="display:none" onclick="showTab('auditoria')">🔍 Auditoria</div>
   <div class="tab active" onclick="showTab('totais')">Totais</div>
   <div class="tab" onclick="showTab('totais-cx')" style="display:none">Totais por CX</div><!-- oculta a pedido do cliente -->
@@ -170,7 +171,7 @@ tr:last-child td{border-bottom:none}
   <div class="tab" onclick="showTab('transito')">🚚 Em Trânsito</div>
   <div class="tab" onclick="showTab('mapa')">🗺 Mapa</div>
   <div style="position:relative;margin-left:auto;display:flex;align-items:center;gap:2px">
-    <button id="btn-atualizar-agora" class="tab" type="button" style="border:0;background:transparent;cursor:pointer;font:inherit" title="Dispara a extração do portal agora, sem esperar o próximo horário programado (06h/12h/18h/23h59)">🔄 Atualizar Agora</button>
+    <button id="btn-atualizar-agora" class="tab" type="button" style="border:0;background:transparent;cursor:pointer;font:inherit" title="Dispara a extração do portal agora, sem esperar o próximo horário programado (08h/11h/14h/16h/18h)">🔄 Atualizar Agora</button>
     <button id="btn-gear-atualizar" type="button" title="Configurar token de atualização" style="border:0;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;padding:4px 8px;font-size:.9rem">⚙</button>
     <div id="painel-token" style="display:none;position:absolute;top:100%;right:0;z-index:50;background:#fff;color:#1e293b;border:1px solid var(--border);border-radius:8px;padding:12px 14px;width:300px;box-shadow:0 8px 24px rgba(0,0,0,.15);margin-top:6px">
       <div style="font-size:.78rem;color:#64748b;margin-bottom:8px">Token do GitHub (Actions, só deste repositório) — pede uma vez só por navegador. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Criar token ↗</a></div>
